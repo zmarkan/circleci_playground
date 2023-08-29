@@ -1,0 +1,19 @@
+version: 2.1
+
+jobs:
+  run:
+    docker: 
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run: echo "Hello, << pipeline.parameters.name >>!"
+
+parameters:
+  name:
+    type: string
+    default: World
+
+workflows:
+  run_run_run:
+    jobs:
+      - run
